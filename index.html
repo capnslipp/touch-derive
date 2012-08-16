@@ -12,7 +12,7 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
 
 body { background-color: #000; }
 
-canvas#main { position: absolute; }
+canvas#sketch { position: absolute; }
 		</style>
 		<script src="processing-1.4.1.js" type="text/javascript" charset="utf-8"></script>
 		<script src="processing-inspector.js" type="text/javascript" charset="utf-8"></script>
@@ -20,6 +20,6 @@ canvas#main { position: absolute; }
 		</script>
 	</head>
 	<body>
-		<canvas id="main" data-processing-sources="touch-derive.pde"></canvas>
+		<canvas id="sketch" data-processing-sources="touch-derive.util.pde touch-derive.SpotBase.pde touch-derive.InputSpot.pde touch-derive.DerivedSpot.pde touch-derive.sketch.pde"></canvas>
 	</body>
 </html>
