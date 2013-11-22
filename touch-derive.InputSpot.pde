@@ -6,8 +6,8 @@ class InputSpot extends SpotBase
 	protected int historyLength = 0;
 	
 	
-	InputSpot(int hue) {
-		super(hue);
+	InputSpot(int hue, int diameter) {
+		super(hue, diameter);
 	}
 	
 	protected int indexFromRelativeTimeStep(int relativeTimeStep) {
@@ -48,20 +48,22 @@ class InputSpot extends SpotBase
 		if (!(this.historyLength > 0))
 			return;
 		
-		for (int timeStepI = 0; timeStepI > -(this.historyLength); --timeStepI) {
-			drawHistorySlice(timeStepI);
+		for (int timeStepI = 0; timeStepI > -10; --timeStepI) {
+			drawHistory(timeStepI);
 		}
 	}
 	
-	void drawHistorySlice(int relativeTimeStep) {
-		
-		if (relativeTimeStep > 0 || relativeTimeStep <= -10)
+	void drawHistory(int relativeTimeStep) {
+		if (relativeTimeStep > 0)
+			return;
+		if (!(relativeTimeStep > -(this.historyLength)))
 			return;
 		
 		int centerX = getXAt(relativeTimeStep);
 		int centerY = getYAt(relativeTimeStep);
 		float alpha = lerp(1.0, 0.0, relativeTimeStep / -10);
 		
-		drawCircleWith(centerX, centerY, alpha);
+		boolean isCurrent = (relativeTimeStep == 0);
+		drawCircleWith(centerX, centerY, alpha, true, isCurrent);
 	}
 }
